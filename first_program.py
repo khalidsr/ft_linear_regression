@@ -15,7 +15,7 @@ def main():
         arg = input("Please Enter a mileage: ")
         try:
             if float(arg) > 0:
-                e_price = np.array(theta0)[-1] + np.array(theta1)[-1]*np.array(data["km"])
+                e_price = np.array(theta0)[-1] + np.array(theta1)[-1] * float(arg)
                 print(f"the estimated price of the car is {e_price} Euro")
             else:
                 raise AssertionError("Enter a valid mileage")
