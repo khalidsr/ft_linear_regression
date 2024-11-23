@@ -7,7 +7,7 @@ def main():
     
 
     data = load("./Dataset/data.csv")
-    data_meileage,data_price = data["km"],data["price"]
+    data_mileage,data_price = data["km"],data["price"]
     theta = load("./Dataset/theta.csv")
     theta0=theta["theta0"]
     theta1=theta["theta1"]
