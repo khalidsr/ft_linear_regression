@@ -12,7 +12,6 @@ def main():
     x = np.array(data_meileage)
     y = np.array(data_price)
     
-    # Fit the linear regression model
     coefficients = np.polyfit(x, y, 1, cov=True)
     print("Linear Fit Coefficients:", coefficients)
     
@@ -20,15 +19,10 @@ def main():
     intercept = coefficients[0][1]
     print(slope, intercept)
     
-    # Generate line points
+
     line_x = np.linspace(min(x), max(x), 100)
     line_y = slope * line_x + intercept
-    # computed_slope, computed_intercept = coefficients
-    # absolute_error_slope = abs(computed_slope - true_slope)
-    # relative_error_slope = absolute_error_slope / true_slope
 
-    # print(f"Absolute Error in Slope: {absolute_error_slope}")
-    # print(f"Relative Error in Slope: {relative_error_slope}")
     plt.xlabel('km')
     plt.ylabel('price')
     plt.title("Mileage of Car")

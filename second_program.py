@@ -1,7 +1,7 @@
 from pars_data import load
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 
 def normalize_array(arr):
     norm_arr = (arr - np.min(arr)) / (np.max(arr) - np.min(arr))
@@ -21,12 +21,8 @@ def train(m, p, alpha):
     theta1 = 0
     i = 0
     while i < 10000:
-
         gradient_theta0 = np.mean(theta1 * m + theta0 - p)
         gradient_theta1 = np.mean((theta1 * m + theta0 - p) * m)
-        print(theta0,"---------------|",i,"|-------------",theta1)
-        # plt.plot(m, theta1 * m + theta0, color="red",)
-
 
         temp_theta0 = theta0 - alpha * gradient_theta0
         temp_theta1 = theta1 - alpha * gradient_theta1
@@ -41,20 +37,21 @@ def train(m, p, alpha):
 
     return theta0, theta1
 
-def main():
 
+def main():
     data = load("./Dataset/data.csv")
     data_mileage, data_price = data["km"], data["price"]
  
     km = normalize_array(np.array(data_mileage))
     price = normalize_array(np.array(data_price))
 
-    alpha = 0.1
+    alpha =0.1
     theta0, theta1 = train(km, price, alpha)
-
     theta0_real, theta1_real = denormalize_coefficients(theta0, theta1, data_mileage, data_price)
+   
     theta_df = pd.DataFrame({"theta0": [theta0_real], "theta1": [theta1_real]})
     theta_df.to_csv("./Dataset/theta.csv", mode="a", header=False, index=False)
+    print(theta0_real)
 
     plt.xlabel('km')
     plt.ylabel('price')
@@ -66,5 +63,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
