@@ -23,7 +23,7 @@ def main():
     try:
         arg = input("Please Enter a mileage: ")
         try:
-            if float(arg) > 0:
+            if float(arg) >= 0:
                 e_price = np.array(theta0)[-1] + np.array(theta1)[-1] * float(arg)
                 print(f"The estimated price of the car is {e_price} Euro")
             else:
